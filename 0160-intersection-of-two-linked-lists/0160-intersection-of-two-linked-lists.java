@@ -34,7 +34,7 @@ public class Solution {
 
         //approach 2
 
-        Set<ListNode> nodeset = new HashSet<>();
+        /*Set<ListNode> nodeset = new HashSet<>();
 
         ListNode nodeA= headA;
         while(nodeA != null){
@@ -49,6 +49,33 @@ public class Solution {
             }
             nodeB=nodeB.next;
         }
-        return null;
+        return null;*/
+
+
+        //approach 3
+
+        Stack<ListNode> stack1 = new Stack<>();
+        Stack<ListNode> stack2 = new Stack<>();
+    
+        ListNode p = headA;
+        while(p!=null){
+            stack1.push(p);
+            p = p.next;
+        }
+
+        p = headB;
+        while(p!=null){
+            stack2.push(p);
+            p = p.next;
+        }
+
+        p = null;
+
+        while(!stack1.isEmpty() && !stack2.isEmpty() && (stack1.peek() == stack2.peek())){
+            p = stack1.pop();
+            stack2.pop();
+        }
+        return p;
+
     }
 }
